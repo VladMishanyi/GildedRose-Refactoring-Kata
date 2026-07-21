@@ -13,11 +13,21 @@ public class ConjuredItemUpdater extends AbstractItemUpdater {
     private static final int NORMAL_DEGRADATION = 2;
     private static final int EXPIRED_DEGRADATION = 4;
 
+    /**
+     * {@inheritDoc}
+     *
+     * <p>Handles any item whose name begins with "Conjured".
+     */
     @Override
     public boolean handles(Item item) {
         return item.name != null && item.name.startsWith(NAME_PREFIX);
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * <p>Lowers quality by two per day, or by four once the sell-by date has passed.
+     */
     @Override
     public void update(Item item) {
         decreaseSellIn(item);

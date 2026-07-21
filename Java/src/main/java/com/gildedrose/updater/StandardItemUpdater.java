@@ -13,11 +13,21 @@ public class StandardItemUpdater extends AbstractItemUpdater {
     private static final int NORMAL_DEGRADATION = 1;
     private static final int EXPIRED_DEGRADATION = 2;
 
+    /**
+     * {@inheritDoc}
+     *
+     * <p>As the catch-all fallback, this updater handles every item.
+     */
     @Override
     public boolean handles(Item item) {
         return true;
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * <p>Lowers quality by one per day, or by two once the sell-by date has passed.
+     */
     @Override
     public void update(Item item) {
         decreaseSellIn(item);

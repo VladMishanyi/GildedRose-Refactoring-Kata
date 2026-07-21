@@ -13,11 +13,21 @@ public class AgedBrieUpdater extends AbstractItemUpdater {
     private static final int NORMAL_IMPROVEMENT = 1;
     private static final int EXPIRED_IMPROVEMENT = 2;
 
+    /**
+     * {@inheritDoc}
+     *
+     * <p>Handles the "Aged Brie" item.
+     */
     @Override
     public boolean handles(Item item) {
         return NAME.equals(item.name);
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * <p>Raises quality by one per day, or by two once the sell-by date has passed.
+     */
     @Override
     public void update(Item item) {
         decreaseSellIn(item);
